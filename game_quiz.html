@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>math quiz</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="game.css">
+
+<script src="quiz_game_login.js"></script>
+</head>
+<body>
+ <h4 id="player1_name"> : </h4> <span id="player1_score">0</span>
+  <br>
+  <h4 id="player2_name"> : </h4> <span id="player2_score">0</span>
+  <script>
+player1_name=localStorage.getItem("player1_name");
+player2_name=localStorage.getItem("player2_name");
+
+player1_score=0;
+player2_score=0;
+
+document.getElementById("player1_name").innerHTML=player1_name+" : ";
+document.getElementById("player2_name").innerHTML=player2_name+" : ";
+
+document.getElementById("player1_score").innerHTML=player1_score;
+document.getElementById("player2_score").innerHTML=player2_score;
+  </script>
+
+  <div class="container">
+   <center>
+       <h2 style="color: white;">The Math Quiz Game!</h2>
+        <br>
+       <h3 id="player_question"></h3>
+       <h3 id="player_answer"></h3>
+         <br>
+       <div id="output" class="col-lg-6"></div>
+        <br>
+       <h3>number 1</h3>
+       <input type="text" id="number1" class="form-control" placeholder="number 1">
+        <br>
+       <h3>number 2</h3>
+       <input type="text" id="number2" class="form-control" placeholder="number 2">
+        <br>
+        <button onclick="send();" class="btn btn-success">send</button>
+        <script>
+          function send(){
+    number1=document.getElementById("number1").value;
+    number2=document.getElementById("number2").value;
+    actual_answer= parseInt(number1)* parseInt(number2);
+    question_number="<h4>"+ number1 + "X" +number2+"</h4>";
+    input_box = "<br>answer : <input type='text' id='input_check_box'>";
+    checkbutton = "<br><br><button class='btn btn-info' onclick='Check();'>check</button>";
+    row = question_number + input_box +  checkbutton;
+    document.getElementById("output").innerHTML = row;
+    document.getElementById("number1").value = "";
+    document.getElementById("number2").value = "";
+}
+        </script>
+   </center>
+  </div>
+</body>
